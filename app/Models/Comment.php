@@ -14,14 +14,24 @@ class Comment extends Model
     use IdTrait;
     use TimestampTrait;
 
-    public function getAuthor(): BelongsTo
+    private function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'author');
     }
 
-    public function getPost(): BelongsTo
+    public function getAuthor(): ?object
+    {
+        return $this->author()->first();
+    }
+
+    private function post(): BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    public function getPost(): object
+    {
+        return $this->post()->first();
     }
 
     public function getContent(): string

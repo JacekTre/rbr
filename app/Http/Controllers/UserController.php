@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use App\Models\User;
-use App\Service\PostService;
+use App\Service\UserService;
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class UserController extends Controller
 {
-    private PostService $service;
+    private UserService $service;
 
     public function __construct(
-        PostService $service
+        UserService $service
     ) {
         $this->service = $service;
     }
@@ -20,36 +19,36 @@ class PostController extends Controller
     public function index()
     {
         try {
-            $posts = $this->service->getAll();
+            $users = $this->service->getAll();
         } catch (\Exception $e) {
             return view('error.index')->with([
                 'errorMessage' => $e->getMessage()
             ]);
         }
 
-        return view('controllers.post.index')->with([
-            'posts' => $posts
+        return view('controllers.user.index')->with([
+            'users' => $users
         ]);
     }
 
-    public function getPost(int $id)
+    public function getUser(int $id)
     {
         try {
-            $post = $this->service->getById($id);
+            $user = $this->service->getById($id);
         } catch (\Exception $e) {
             return view('error.index')->with([
                 'errorMessage' => $e->getMessage()
             ]);
         }
 
-        if (! $post instanceof Post) {
+        if (! $user instanceof User) {
             return view('error.index')->with([
-                'errorMessage' => 'Nie znaleziono postu'
+                'errorMessage' => 'Nie znaleziono użytkownika'
             ]);
         }
 
-        return view('controllers.post.getPost')->with([
-            'post' => $post
+        return view('controllers.user.getUser')->with([
+            'user' => $user
         ]);
     }
 }
