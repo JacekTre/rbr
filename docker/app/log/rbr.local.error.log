@@ -1,0 +1,6 @@
+[Sun Mar 13 11:30:01.508712 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Mar 13 11:30:01.537405 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Mar 13 13:27:59.774335 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Mar 13 13:27:59.801543 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Mar 13 13:31:16.362083 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
+[Sun Mar 13 13:31:16.386294 2022] [ssl:warn] [pid 1] AH01906: rbr.local:443:0 server certificate is a CA certificate (BasicConstraints: CA == TRUE !?)
