@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Models\User;
 use App\Service\UserService;
-use Illuminate\Http\Request;
+use function view;
 
 class UserController extends Controller
 {

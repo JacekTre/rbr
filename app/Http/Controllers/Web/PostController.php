@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Service\PostService;
-use Illuminate\Http\Request;
+use function view;
 
 class PostController extends Controller
 {
