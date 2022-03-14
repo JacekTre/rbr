@@ -3,19 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
+        <div class="col-8 text-center">
+            <h1>Dostępne opcje:</h1>
+            <div class="m-3">
+                <a href="{{ route('users.list') }}" class="btn btn-primary">Użytkownicy</a>
+            </div>
+            <div class="m-3">
+                <a href="{{ route('posts.list') }}" class="btn btn-primary">Posty</a>
             </div>
         </div>
     </div>
