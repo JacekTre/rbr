@@ -22,4 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function () {
     Route::get('posts', [PostController::class, 'getList']);
     Route::get('posts/{id}', [PostController::class, 'get']);
+    Route::put('posts/{id}', [PostController::class, 'put']);
 });
