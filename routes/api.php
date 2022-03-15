@@ -25,9 +25,11 @@ Route::prefix('v1')->group(function () {
     Route::get('posts/{id}', [PostController::class, 'get']);
     Route::put('posts/{id}', [PostController::class, 'put']);
     Route::post('posts', [PostController::class, 'post']);
+    Route::delete('posts/{id}', [PostController::class, 'delete']);
 
     Route::get('comments', [CommentController::class, 'getList']);
     Route::get('comments/{id}', [CommentController::class, 'get']);
     Route::put('comments/{id}', [CommentController::class, 'put']);
     Route::post('comments', [CommentController::class, 'post']);
+    Route::delete('comments/{id}', [CommentController::class, 'delete']);
 });

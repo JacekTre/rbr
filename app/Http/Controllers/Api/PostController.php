@@ -82,7 +82,11 @@ class PostController extends Controller
             }
 
             $updatedPost = $this->service->updatePost($post, $request);
-            return response()->json((new SuccessResponse(PostExtractor::extract($updatedPost)))->toArray(), 200);
+            return response()->json(
+                (new SuccessResponse(
+                    PostExtractor::extract($post),
+                    $request->all()
+                ))->toArray(), 200);
         } catch (\Exception $exception) {
             return response()->json((new FailureResponse($exception->getMessage()))->toArray());
         }
@@ -103,9 +107,30 @@ class PostController extends Controller
             }
 
             $post = $this->service->createPost($request);
-            return response()->json((new SuccessResponse(PostExtractor::extract($post)))->toArray(), 200);
+            return response()->json(
+                (new SuccessResponse(
+                    PostExtractor::extract($post),
+                    $request->all()
+                ))->toArray(), 200);
         } catch (\Exception $exception) {
             return response()->json((new FailureResponse($exception->getMessage()))->toArray());
+        }
+    }
+
+    public function delete(int $id): JsonResponse
+    {
+        try {
+            $post = $this->service->getById($id);
+
+            if (! $post instanceof Post) {
+                return response()->json((new FailureResponse('Post does not exist'))->toArray(),200);
+            }
+
+            $this->service->delete($post);
+
+            return response()->json((new SuccessResponse())->toArray(), 200);
+        } catch (\Exception $exception) {
+            return response()->json((new FailureResponse($exception->getMessage()))->toArray(), 500);
         }
     }
 }

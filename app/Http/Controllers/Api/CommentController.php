@@ -85,7 +85,11 @@ class CommentController extends Controller
             }
 
             $updatedComment = $this->service->updateComment($comment, $request);
-            return response()->json((new SuccessResponse(CommentExtractor::extract($updatedComment)))->toArray(), 200);
+            return response()->json(
+                (new SuccessResponse(
+                    CommentExtractor::extract($updatedComment),
+                    $request->all()
+                ))->toArray(), 200);
         } catch (\Exception $exception) {
             return response()->json((new FailureResponse($exception->getMessage()))->toArray());
         }
@@ -106,7 +110,28 @@ class CommentController extends Controller
             }
 
             $comment = $this->service->createComment($request);
-            return response()->json((new SuccessResponse(CommentExtractor::extract($comment)))->toArray(), 200);
+            return response()->json(
+                (new SuccessResponse(
+                    CommentExtractor::extract($comment),
+                    $request->all()
+                ))->toArray(), 200);
+        } catch (\Exception $exception) {
+            return response()->json((new FailureResponse($exception->getMessage()))->toArray(), 500);
+        }
+    }
+
+    public function delete(int $id): JsonResponse
+    {
+        try {
+            $comment = $this->service->getById($id);
+
+            if (! $comment instanceof Comment) {
+                return response()->json((new FailureResponse('Comment does not exist'))->toArray(),200);
+            }
+
+            $this->service->delete($comment);
+
+            return response()->json((new SuccessResponse())->toArray(), 200);
         } catch (\Exception $exception) {
             return response()->json((new FailureResponse($exception->getMessage()))->toArray(), 500);
         }

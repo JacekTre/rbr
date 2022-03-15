@@ -64,4 +64,9 @@ class CommentService
 
         return $comment;
     }
+
+    public function delete(Comment $comment): void
+    {
+        $comment->delete();
+    }
 }

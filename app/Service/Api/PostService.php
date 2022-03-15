@@ -60,4 +60,9 @@ class PostService
 
         return $updatedPost;
     }
+
+    public function delete(Post $post): void
+    {
+        $post->delete();
+    }
 }
