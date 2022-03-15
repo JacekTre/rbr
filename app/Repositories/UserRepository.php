@@ -16,4 +16,9 @@ class UserRepository
     {
         return User::find($userId);
     }
+
+    public function getByEmail(string $email): ?User
+    {
+        return User::where('email', $email)->first();
+    }
 }

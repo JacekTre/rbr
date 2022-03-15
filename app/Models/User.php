@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         $this->email = $email;
     }
+
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
 }
