@@ -11,6 +11,9 @@
             <div class="m-3">
                 <a href="{{ route('posts.list') }}" class="btn btn-primary">Posty</a>
             </div>
+            <div class="m-3">
+                <a href="{{ route('client.list') }}" class="btn btn-primary">API</a>
+            </div>
         </div>
     </div>
 </div>
