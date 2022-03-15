@@ -15,9 +15,10 @@ class CommentExtractor
         return [
             'id' => $comment->getId(),
             'author' => UserExtractor::extract($comment->getAuthor()),
+            'postId' => $comment->getPost()->getId(),
             'content' => $comment->getContent(),
-            'createdAt' => $comment->getCreatedAt(),
-            'updatedAt' => $comment->getUpdatedAt(),
+            'createdAt' => $comment->getCreatedAt()->format('d-m-Y H:i:s'),
+            'updatedAt' => $comment->getUpdatedAt()->format('d-m-Y H:i:s'),
         ];
     }
 }

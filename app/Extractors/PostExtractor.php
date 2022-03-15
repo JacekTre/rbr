@@ -18,8 +18,8 @@ class PostExtractor
             'title' => $post->getTitle(),
             'content' => $post->getContent(),
             'comments' => self::prepareComments($post),
-            'createdAt' => $post->getCreatedAt(),
-            'updatedAt' => $post->getUpdatedAt(),
+            'createdAt' => $post->getCreatedAt()->format('d-m-Y H:i:s'),
+            'updatedAt' => $post->getUpdatedAt()->format('d-m-Y H:i:s'),
         ];
     }
 

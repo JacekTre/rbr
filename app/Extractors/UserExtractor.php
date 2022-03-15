@@ -16,8 +16,8 @@ class UserExtractor
             'id' => $user->getId(),
             'name' => $user->getName(),
             'email' => $user->getEmail(),
-            'createdAt' => $user->getCreatedAt(),
-            'updatedAt' => $user->getUpdatedAt(),
+            'createdAt' => $user->getCreatedAt()->format('d-m-Y H:i:s'),
+            'updatedAt' => $user->getUpdatedAt()->format('d-m-Y H:i:s'),
         ];
     }
 }

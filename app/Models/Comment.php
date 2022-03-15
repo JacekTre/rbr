@@ -29,9 +29,19 @@ class Comment extends Model
         return null;
     }
 
+    public function setAuthor(User $user): void
+    {
+        $this->author = $user->getId();
+    }
+
     private function post(): BelongsTo
     {
         return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    public function setPost(Post $post): void
+    {
+        $this->post_id = $post->getId();
     }
 
     public function getPost(): object
@@ -42,5 +52,10 @@ class Comment extends Model
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
     }
 }

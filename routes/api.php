@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,9 @@ Route::prefix('v1')->group(function () {
     Route::get('posts/{id}', [PostController::class, 'get']);
     Route::put('posts/{id}', [PostController::class, 'put']);
     Route::post('posts', [PostController::class, 'post']);
+
+    Route::get('comments', [CommentController::class, 'getList']);
+    Route::get('comments/{id}', [CommentController::class, 'get']);
+    Route::put('comments/{id}', [CommentController::class, 'put']);
+    Route::post('comments', [CommentController::class, 'post']);
 });
