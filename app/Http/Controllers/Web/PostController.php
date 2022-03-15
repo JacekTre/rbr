@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Service\PostService;
+use App\Service\Web\PostService;
 use function view;
 
 class PostController extends Controller

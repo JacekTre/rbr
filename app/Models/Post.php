@@ -31,9 +31,14 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author');
     }
 
-    public function getAuthor(): ?object
+    public function getAuthor(): ?User
     {
-        return $this->author()->first();
+        $user = $this->author()->first();
+        if ($user instanceof User) {
+            return $user;
+        }
+
+        return null;
     }
 
     public function getCommentsCount(): int
