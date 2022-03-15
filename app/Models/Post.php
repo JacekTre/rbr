@@ -41,6 +41,11 @@ class Post extends Model
         return null;
     }
 
+    public function setAuthor(User $user): void
+    {
+        $this->author = $user->getId();
+    }
+
     public function getCommentsCount(): int
     {
         return $this->comments()->get()->count();

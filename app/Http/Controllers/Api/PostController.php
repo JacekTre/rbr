@@ -12,6 +12,7 @@ use App\Service\Api\Response\FailureResponse;
 use App\Service\Api\Response\SuccessResponse;
 use App\Validators\PostContentValidator;
 use App\Validators\PostTitleValidator;
+use App\Validators\UserValidator;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -94,4 +95,24 @@ class PostController extends Controller
         }
     }
 
+    public function post(Request $request): JsonResponse
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'title' => ['required', new PostTitleValidator()],
+                'content' => ['required', new PostContentValidator()],
+                'authorId' => ['required', new UserValidator()]
+            ]);
+
+            if ($validator->fails()) {
+                $errors = implode(" ", ValidatorMessageExtractor::extract($validator));
+                return response()->json((new FailureResponse($errors))->toArray(),200);
+            }
+
+            $post = $this->service->createPost($request);
+            return response()->json((new SuccessResponse(PostExtractor::extract($post)))->toArray(), 200);
+        } catch (\Exception $exception) {
+            return response()->json((new FailureResponse($exception->getMessage()))->toArray());
+        }
+    }
 }
