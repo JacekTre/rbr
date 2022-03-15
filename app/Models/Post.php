@@ -31,9 +31,19 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author');
     }
 
-    public function getAuthor(): ?object
+    public function getAuthor(): ?User
     {
-        return $this->author()->first();
+        $user = $this->author()->first();
+        if ($user instanceof User) {
+            return $user;
+        }
+
+        return null;
+    }
+
+    public function setAuthor(User $user): void
+    {
+        $this->author = $user->getId();
     }
 
     public function getCommentsCount(): int
@@ -46,9 +56,19 @@ class Post extends Model
         return $this->title;
     }
 
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
     public function getContent(): string
     {
         return $this->content;
+    }
+
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
     }
 
     public function getAbbreviatedContent(): string

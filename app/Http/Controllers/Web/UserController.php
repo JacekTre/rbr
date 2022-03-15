@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Service\UserService;
+use App\Service\Web\UserService;
 use function view;
 
 class UserController extends Controller

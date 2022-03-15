@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Web;
 
 use App\Models\Post;
 use App\Repositories\PostRepository;
@@ -20,7 +20,7 @@ class PostService
 
     public function getAll(): ?LengthAwarePaginator
     {
-        return $this->posts->getAll(self::PAGE_SIZE);
+        return $this->posts->getAllPaginate(self::PAGE_SIZE);
     }
 
     public function getById(int $id): ?Post

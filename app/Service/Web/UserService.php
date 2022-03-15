@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Web;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
