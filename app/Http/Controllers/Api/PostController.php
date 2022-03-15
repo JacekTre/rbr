@@ -81,14 +81,7 @@ class PostController extends Controller
                 return response()->json((new FailureResponse($errors))->toArray(),200);
             }
 
-            $postData = [
-                'title' => $request->get('title'),
-                'content' => $request->get('content')
-            ];
-
-            $updatedPost = UpdatePostHydrator::hydrate($post, $postData);
-            $updatedPost->save();
-
+            $updatedPost = $this->service->updatePost($post, $request);
             return response()->json((new SuccessResponse(PostExtractor::extract($updatedPost)))->toArray(), 200);
         } catch (\Exception $exception) {
             return response()->json((new FailureResponse($exception->getMessage()))->toArray());

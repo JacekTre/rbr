@@ -3,6 +3,7 @@
 namespace App\Service\Api;
 
 use App\Hydrators\CreatePostHydrator;
+use App\Hydrators\UpdatePostHydrator;
 use App\Models\Post;
 use App\Repositories\PostRepository;
 use App\Repositories\UserRepository;
@@ -45,5 +46,18 @@ class PostService
         $post->save();
 
         return $post;
+    }
+
+    public function updatePost(Post $post, Request $request): Post
+    {
+        $postData = [
+            'title' => $request->get('title'),
+            'content' => $request->get('content')
+        ];
+
+        $updatedPost = UpdatePostHydrator::hydrate($post, $postData);
+        $updatedPost->save();
+
+        return $updatedPost;
     }
 }
