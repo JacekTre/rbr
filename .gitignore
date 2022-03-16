@@ -5,6 +5,8 @@
 /vendor
 /docker/db/lib
 /docker/db/log
+/docker/app/log
+.idea
 .env
 .env.backup
 .phpunit.result.cache

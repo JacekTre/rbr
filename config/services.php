@@ -30,4 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'api' => [
+        'basePath' => env('APP_URL', 'http://rbr.local'),
+        'basePathApi' => env('APP_URL', 'http://rbr.local') . '/api/v1',
+        'endpoints' => [
+            'comments' => '/comments',
+            'posts' => '/posts',
+        ]
+    ]
+
 ];
