@@ -10,9 +10,8 @@ use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractApiClient
 {
-    public const SUCCESS = 'success';
-
-    public const FAILURE = 'failure';
+    public const SUCCESS = 'SUCCESS';
+    public const FAILURE = 'FAILURE';
 
     public const POST = 'POST';
     public const PUT = 'PUT';

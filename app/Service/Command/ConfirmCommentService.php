@@ -2,28 +2,19 @@
 
 namespace App\Service\Command;
 
-use App\Hydrators\CreatePostHydrator;
-use App\Repositories\UserRepository;
 use App\Service\Web\Client\AbstractApiClient;
 use App\Service\Web\Client\RequestPost;
-use Illuminate\Support\Str;
 
-class RandomPostService
+class ConfirmCommentService
 {
-    private UserRepository $users;
+    public const COMMENT = 'TAK';
 
-    public function __construct(
-        UserRepository $users
-    ) {
-        $this->users = $users;
-    }
-
-    public function generatePostViaApi(): void
+    public function generateConfirmCommentViaApi(): void
     {
         $query = [
             'authorId' => (new RandomUser())->get()->getId(),
-            'title' => Str::random(30),
-            'content' => Str::random(120)
+            'postId' => (new RandomPost())->get()->getId(),
+            'content' => self::COMMENT
         ];
 
         $response = (new RequestPost($this->preparePath(), json_encode($query)))->sendRequest();
@@ -35,6 +26,6 @@ class RandomPostService
 
     private function preparePath(): string
     {
-        return config('services.api.basePathApi') . config('services.api.endpoints.posts');
+        return config('services.api.basePathApi') . config('services.api.endpoints.comments');
     }
 }

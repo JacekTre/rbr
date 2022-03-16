@@ -1,7 +1,8 @@
 
+
 # Zadanie rekrutacyjne RBR
 
-#### Stack technologiczny
+## Stack technologiczny
 - MySQL 5.7
 - Apache 2
 - PHP 7.4
@@ -10,7 +11,7 @@
 - git
 - docker-compose (dla lokalnego środowiska programistycznego)
 
-#### Instalacja
+## Instalacja
 - W katalogu projektu wykonaj kolejno kommendy:
 ```
 git clone git@github.com:JacekTre/rbr.git
@@ -22,9 +23,18 @@ cp docker-compose.yml.dist docker-compose.yml
 ```
 composer install
 php artisan migrate
+php artisan schedule:clear-cache
+php artisan config:clear
+php artisan config:cache
 ```
 
-#### Docker
+## Zadania cykliczne
+Do zadań cyklicznych jest poptrzebne uruchomienie skryptu:
+```
+php artisan schedule:work
+```
+
+## Docker
 - Budowa kontenerów:
 ```
 docker-compose build --force-rm --no-cache

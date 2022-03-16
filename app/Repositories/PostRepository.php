@@ -23,4 +23,9 @@ class PostRepository
     {
         return Post::find($postId);
     }
+
+    public function countAllPosts(): int
+    {
+        return Post::all()->count();
+    }
 }
