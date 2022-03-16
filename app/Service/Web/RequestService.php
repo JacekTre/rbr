@@ -37,7 +37,7 @@ class RequestService
         $path = $request->get('basePath') . $request->get('endpoint');
 
         $id = $request->get('objectId');
-        if (! is_null($id)) {
+        if (! is_null($id) && $request->get('method') !== AbstractApiClient::POST) {
             $path .= '/' . $id;
         }
 
