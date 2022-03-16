@@ -21,4 +21,9 @@ class UserRepository
     {
         return User::where('email', $email)->first();
     }
+
+    public function countAllUsers(): int
+    {
+        return User::all()->count();
+    }
 }
