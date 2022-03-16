@@ -14,7 +14,17 @@ abstract class AbstractApiClient
 
     public const FAILURE = 'failure';
 
-    public const METHOD = ['POST', 'PUT', 'GET', 'DELETE'];
+    public const POST = 'POST';
+    public const PUT = 'PUT';
+    public const GET = 'GET';
+    public const DELETE = 'DELETE';
+
+    public const METHOD = [
+        self::POST,
+        self::PUT,
+        self::GET,
+        self::DELETE
+    ];
 
     protected function post(string $path, array $body): array
     {
@@ -79,10 +89,7 @@ abstract class AbstractApiClient
     {
 
         if ($response->getStatusCode() == 200) {
-            return [
-                'status' => self::SUCCESS,
-                'message' => json_decode($response->getBody()->getContents(), true)
-            ];
+            return json_decode($response->getBody()->getContents(), true);
         }
 
         if ($response->getStatusCode() == 401) {

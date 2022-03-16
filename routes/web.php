@@ -23,5 +23,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/posts/{id}', [PostController::class, 'getPost'])->name('posts.getPost');
 
     Route::get('/client', [ApiController::class, 'index'])->name('client.list');
-    Route::get('/client/result', [ApiController::class, 'getResult'])->name('client.result');
+    Route::post('/client/result', [ApiController::class, 'getResult'])->name('client.result');
 });

@@ -10,6 +10,7 @@
 
                 <div class="col-12 text-center">
                     <form action="{{ route('client.result') }}" method="POST">
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="basePath">Podstawowa ścieżka API:</label>
                             <input type="text" class="form-control"  name="basePath" value="{{ $apiPath }}" readonly="readonly">
